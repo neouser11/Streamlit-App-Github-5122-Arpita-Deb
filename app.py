@@ -2,8 +2,9 @@ import streamlit as st
 import altair as alt
 import numpy as np
 import pandas as pd
+import zipfile
 
-df=pd.read_csv('combinedlistings_clean (1).csv')
+df = pd.read_csv('combined_listings_clean.zip',compression='zip')
 st.set_page_config(layout="wide")
 st.title('Airbnb Chicago')
 
@@ -47,7 +48,7 @@ bars = alt.Chart(pricedf,title=f"Average Price by Room Type in **{neighbourhood}
 st.altair_chart(bars, use_container_width=True)
 
 
-############"#####
+################
 st.markdown("Select Neighbourhood Filter to find the **Top Rated Hosts** in the area")
 
 top = df.query(f"""neighbourhood_cleansed==@neighbourhood""")
